@@ -4,14 +4,14 @@ import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { s3Client } from "../client/index.js";
 
 // Specifies path, file, and content type.
-export const bucketParams = {
+const bucketParams = {
     Bucket: "example-bucket-name",
     Key: "file.ext",
     ContentType: "text"
 };
 
 // Generates the URL.
-export const run = async () => {
+export const generatePreSignedUrlForUpload = async () => {
     try {
         const url = await getSignedUrl(s3Client, new PutObjectCommand(bucketParams), { expiresIn: 15 * 60 }); // Adjustable expiration.
         console.log("URL:", url);
@@ -20,5 +20,3 @@ export const run = async () => {
         console.log("Error", err);
     }
 };
-
-run();

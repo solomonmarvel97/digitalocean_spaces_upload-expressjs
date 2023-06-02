@@ -6,7 +6,7 @@ import { s3Client } from "../client/index.js";
 const bucketParams = { Bucket: "new-bucket" };
 
 // Creates the new Space.
-const run = async () => {
+export const create = async () => {
     try {
         const data = await s3Client.send(new CreateBucketCommand(bucketParams));
         console.log("Success", data.Location);
@@ -15,5 +15,3 @@ const run = async () => {
         console.log("Error", err);
     }
 };
-
-run();

@@ -20,7 +20,7 @@ const streamToString = (stream) => {
 };
 
 // Downloads your file and saves its contents to /tmp/local-file.ext.
-const run = async () => {
+export const download = async () => {
     try {
         const response = await s3Client.send(new GetObjectCommand(bucketParams));
         const data = await streamToString(response.Body);
@@ -31,5 +31,3 @@ const run = async () => {
         console.log("Error", err);
     }
 };
-
-run();

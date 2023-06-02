@@ -3,14 +3,14 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "../client/index.js";
 
 // Specifies a path within your bucket and the file to upload.
-export const bucketParams = {
+const bucketParams = {
     Bucket: "cohort3",
     Key: "example.txt",
     Body: "content"
 };
 
 // Uploads the specified file to the chosen path.
-export const run = async () => {
+export const upload = async () => {
     try {
         const data = await s3Client.send(new PutObjectCommand(bucketParams));
         console.log(
@@ -24,5 +24,3 @@ export const run = async () => {
         console.log("Error", err);
     }
 };
-
-run();

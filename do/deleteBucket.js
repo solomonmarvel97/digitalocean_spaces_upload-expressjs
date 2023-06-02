@@ -3,10 +3,10 @@ import { DeleteBucketCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "../client/index.js";
 
 // Specifies the name of the bucket to delete.
-export const bucketParams = { Bucket: "cohort3" };
+const bucketParams = { Bucket: "cohort3" };
 
 // Deletes specified bucket.
-export const run = async () => {
+export const deleteBucket = async () => {
     try {
         const data = await s3Client.send(new DeleteBucketCommand(bucketParams));
         return data;
@@ -15,5 +15,3 @@ export const run = async () => {
         console.log("Error", err);
     }
 };
-
-run();

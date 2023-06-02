@@ -3,10 +3,10 @@ import { DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "../client/index.js";
 
 // Specifies a path within your bucket and the file to delete.
-export const bucketParams = { Bucket: "cohort3", Key: "example.txt" };
+const bucketParams = { Bucket: "cohort3", Key: "example.txt" };
 
 // Returns a list of objects in your specified path.
-export const run = async () => {
+export const deleteFile = async () => {
     try {
         const data = await s3Client.send(new DeleteObjectCommand(bucketParams));
         console.log("Success", data);
@@ -15,5 +15,3 @@ export const run = async () => {
         console.log("Error", err);
     }
 };
-
-run();

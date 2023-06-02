@@ -6,7 +6,7 @@ import { s3Client } from "../client/index.js";
 export const bucketParams = { Bucket: "cohort3" };
 
 // Returns a list of objects in your specified path.
-export const run = async () => {
+export const listFiles = async () => {
     try {
         const data = await s3Client.send(new ListObjectsCommand(bucketParams));
         console.log("Success", data);
@@ -15,5 +15,3 @@ export const run = async () => {
         console.log("Error", err);
     }
 };
-
-run();
